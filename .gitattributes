@@ -1,0 +1,4 @@
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+grafana filter=lfs diff=lfs merge=lfs -text
+prometheus filter=lfs diff=lfs merge=lfs -text
+promtool filter=lfs diff=lfs merge=lfs -text
