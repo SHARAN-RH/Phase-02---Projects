@@ -1,0 +1,16 @@
+- name: Build Grafana Docker image
+  docker_image:
+    name: custom_grafana
+    build:
+      path: "{{ role_path }}/files"
+    source: build
+    state: present
+
+- name: Run Grafana container
+  docker_container:
+    name: grafana
+    image: custom_grafana
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3000:3000"

@@ -1,0 +1,7 @@
+- name: Monitoring Stack Setup
+  hosts: local
+  become: true
+  roles:
+    - prometheus
+    - node_exporter
+    - grafana

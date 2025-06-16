@@ -1,0 +1,16 @@
+- name: Build Node Exporter Docker image
+  docker_image:
+    name: custom_node_exporter
+    build:
+      path: "{{ role_path }}/files"
+    source: build
+    state: present
+
+- name: Run Node Exporter container
+  docker_container:
+    name: node_exporter
+    image: custom_node_exporter
+    state: started
+    restart_policy: always
+    published_ports:
+      - "9100:9100"

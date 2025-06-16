@@ -1,0 +1,15 @@
+- name: Build Prometheus Docker image
+  docker_image:
+    name: custom_prometheus
+    build:
+      path: "{{ role_path }}/files"
+    source: build
+    state: present
+
+- name: Run Prometheus container
+  docker_container:
+    name: prometheus
+    image: custom_prometheus
+    state: started
+    restart_policy: always
+    network_mode: host
